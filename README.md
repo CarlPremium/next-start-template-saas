@@ -42,6 +42,25 @@ Copy `.env.example` to `.env.local` and adjust values as needed. The
 `NEXT_PUBLIC_SIMPLE_ANALYTICS_URL` variable controls the analytics script
 loaded in `_document.tsx`.
 
+### Supabase and Stripe
+
+This template includes optional examples for authentication with **Supabase**
+and payments with **Stripe**. Provide the following variables in your
+`.env.local`:
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=<your-supabase-url>
+NEXT_PUBLIC_SUPABASE_ANON_KEY=<your-anon-key>
+STRIPE_SECRET_KEY=<your-stripe-secret>
+STRIPE_PRICE_ID=<your-price-id>
+STRIPE_WEBHOOK_SECRET=<your-webhook-secret>
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+```
+
+Supabase handles email/password, Google OAuth and magic link logins. Stripe is
+used to create checkout sessions and process webhooks that update the user's
+subscription status in your database.
+
 
 ## 🤝 Contributing
 
