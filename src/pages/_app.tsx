@@ -1,6 +1,6 @@
 import { AppProps } from 'next/app';
 import '@/styles/global.css';
-import '@fontsource/inter';
+import '@fontsource/inter/latin.css';
 
 import { setup } from 'twind';
 import twindConfig from '../twind.config';

@@ -1,5 +1,6 @@
 import { tw } from 'twind';
 import { useState } from 'react';
+import Image from 'next/image';
 import Button from '@/components/button';
 
 interface IMenuButton {
@@ -120,7 +121,7 @@ const Navigation = () => {
         <div className={tw(`flex items-center justify-between h-24`)}>
           <div className={tw(`flex items-center`)}>
             <div className={tw(`flex-shrink-0`)}>
-              <img className={tw(`h-12 w-12`)} src="logo.svg" alt="logo" width={48} height={48} />
+              <Image className={tw(`h-12 w-12`)} src="/logo.svg" alt="logo" width={48} height={48} />
             </div>
             <div className={tw(`hidden md:block`)}>
               <div className={tw(`ml-10 flex items-baseline space-x-4`)}>
