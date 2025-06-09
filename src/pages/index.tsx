@@ -7,8 +7,8 @@ import FeatureSection from '@/components/feature-section';
 import dynamic from 'next/dynamic';
 
 const CasesSection = dynamic(() => import('@/components/cases-section'), { ssr: false });
-import SocialProof from '@/components/social-proof';
-import PricingTable from '@/components/pricing-table';
+const SocialProof = dynamic(() => import('@/components/social-proof'), { ssr: false });
+const PricingTable = dynamic(() => import('@/components/pricing-table'), { ssr: false });
 import Footer from '@/components/footer';
 
 export default function Home() {
