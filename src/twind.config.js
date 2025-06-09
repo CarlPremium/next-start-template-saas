@@ -1,4 +1,6 @@
-export default {
+/** @type {import('twind').Configuration} */
+const config = {
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
@@ -9,3 +11,5 @@ export default {
     },
   },
 };
+
+export default config;

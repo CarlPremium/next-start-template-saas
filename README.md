@@ -1,90 +1,65 @@
-<p align="center">
-  <img src="public/screenshot.png" alt="Screenshot">
-</p>
+# Next.js Premium SaaS Boilerplate
 
-<p align="center">
-  <img src="https://img.shields.io/static/v1?label=PRs&message=welcome&style=for-the-badge&color=24B36B&labelColor=000000" alt="PRs welcome!" />
-  <img alt="License" src="https://img.shields.io/github/license/jkytoela/next-startd?style=for-the-badge&color=24B36B&labelColor=000000">
-  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/jkytoela/next-startd?style=for-the-badge&color=24B36B&labelColor=000000">
-</p>
-<br>
+![Screenshot](public/screenshot.png)
 
-Ship your startup in days, not weeks. The Next.js boilerplate with all you need to build your SaaS, AI tool, or any other web app and make your first $ online fast.
+A production ready template for building SaaS products with **Next.js**. It ships with dark mode, SEO, more than 30 UI components and ready made sections so you can launch quickly.
 
-<a href="https://next-startd.vercel.app">Live demo</a>
+[Live demo](https://next-startd.vercel.app)
 
-- ⚡ **Next.js** — The React Framework
-- 🔥 **next-seo** — Manage SEO easily
-- 💡 **Twind** — The smallest, fastest, most feature complete Tailwind-in-JS solution in existence
-- 📏 **ESLint** — Pluggable JavaScript linter
-- 💖 **Prettier** — Opinionated Code Formatter
-- 🐶 **Husky** — Use git hooks with ease
-- 📄 **Commitizen** — Conventional commit messages CLI
-- 🚓 **Commitlint** — Lint commit messages
-- 🖌 **Renovate** — Dependency update tool
-- 🚫 **lint-staged** — Run linters against staged git files
-- 🗂 **Absolute import** — Import folders and files using the `@` prefix
+## Features
 
-## 🚀 Getting started
+- **Next.js 14** with TypeScript
+- **30+ components** including marketing sections, pricing table and authentication pages
+- **Dark mode** with a simple toggle
+- **Animated sections** powered by CSS transitions
+- **Supabase authentication** (email, OAuth and magic links)
+- **Stripe billing** with checkout and webhook examples
+- **next-seo** for easy SEO management
+- **Twind** for styling
+- Ready to deploy on Vercel
 
-If you're logged in, easiest way to get started is to [click here](https://github.com/jkytoela/next-startd/generate).
+## Getting started
 
-Run the following commands inside the project folder:
+Generate your own repository using [this template](https://github.com/jkytoela/next-startd/generate) then install dependencies:
 
-1. `yarn`
-2. `yarn dev`
+```bash
+yarn
+yarn dev
+```
 
-To view the project open `http://localhost:3000`
+Visit `http://localhost:3000` to view the project.
 
 ### Environment variables
 
-Copy `.env.example` to `.env.local` and adjust values as needed. The
-`NEXT_PUBLIC_SIMPLE_ANALYTICS_URL` variable controls the analytics script
-loaded in `_document.tsx`.
-
-### Supabase and Stripe
-
-This template includes optional examples for authentication with **Supabase**
-and payments with **Stripe**. Provide the following variables in your
-`.env.local`:
+Copy `.env.example` to `.env.local` and fill in the values:
 
 ```bash
+NEXT_PUBLIC_SIMPLE_ANALYTICS_URL=<analytics-url>
 NEXT_PUBLIC_SUPABASE_URL=<your-supabase-url>
 NEXT_PUBLIC_SUPABASE_ANON_KEY=<your-anon-key>
+SUPABASE_SERVICE_ROLE_KEY=<your-service-role>
 STRIPE_SECRET_KEY=<your-stripe-secret>
 STRIPE_PRICE_ID=<your-price-id>
 STRIPE_WEBHOOK_SECRET=<your-webhook-secret>
 NEXT_PUBLIC_APP_URL=http://localhost:3000
+RESEND_API_KEY=<email-provider-key>
 ```
 
-Supabase handles email/password, Google OAuth and magic link logins. Stripe is
-used to create checkout sessions and process webhooks that update the user's
-subscription status in your database.
+### Supabase & Stripe
+
+Authentication is handled with Supabase, supporting email/password and OAuth logins. Pricing uses Stripe Checkout and a webhook to update subscription status in your database.
 
 ### Emails
 
-Use [Resend](https://resend.com) or Mailgun to send transactional emails. Add a
-`RESEND_API_KEY` to your environment and call `/api/send-email` to send emails.
+Send transactional emails through Resend or Mailgun by calling `/api/send-email`.
 
-Configure DNS on a subdomain to avoid the spam folder. Set up `SPF`, `DKIM` and
-`DMARC` records with your domain registrar. Resend and Mailgun provide the
-correct values during domain verification.
+## Contributing
 
-For inbound mail, point the provider's webhook to `/api/email/webhook` and
-forward messages anywhere you need.
+1. Fork this repo
+2. Create a feature branch
+3. Commit your changes
+4. Open a pull request
 
+## License
 
-## 🤝 Contributing
-
-1. Fork this repository
-2. Create your branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -m 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-
-Consider contributing to the original TypeScript Starter, which you can find [here](https://github.com/jpedroschmitz).
-
-**After your pull request is merged**, you can safely delete your branch.
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for more information.
+[MIT](LICENSE.md)
