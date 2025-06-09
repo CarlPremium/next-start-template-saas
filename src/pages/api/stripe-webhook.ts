@@ -8,9 +8,7 @@ export const config = {
   },
 };
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || ``, {
-  apiVersion: `2022-11-15`,
-});
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || ``);
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET || ``;
 
