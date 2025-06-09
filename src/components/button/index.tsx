@@ -1,6 +1,6 @@
 import { tw } from 'twind';
 
-interface IButton {
+interface IButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   primary?: boolean;
   children: React.ReactNode;
   modifier?: string;

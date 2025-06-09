@@ -16,7 +16,8 @@ export default function Home() {
     <Page>
       <NextSeo
         title="STARTD - Template"
-        description="A TypeScript/Next.js theme that includes everything you need to build amazing landing page!"
+        // eslint-disable-next-line max-len
+        description="Ship your startup in days, not weeks. The Next.js boilerplate with all you need to build your SaaS, AI tool, or any other web app and make your first $ online fast."
       />
       <Header />
       <main>

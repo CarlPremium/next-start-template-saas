@@ -58,8 +58,16 @@ const PricingTable = () => (
           <div className={tw(`my-4 flex items-center justify-center text-6xl leading-none font-bold text-gray-800`)}>
             $99/mo
           </div>
-          <Button primary modifier="mt-6">
-            Contact sales
+          <Button
+            primary
+            modifier="mt-6"
+            onClick={async () => {
+              const res = await fetch(`/api/checkout`, { method: `POST` });
+              const data = await res.json();
+              if (data.url) window.location.href = data.url;
+            }}
+          >
+            Subscribe
           </Button>
         </div>
       </div>

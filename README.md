@@ -9,7 +9,7 @@
 </p>
 <br>
 
-A free Next.js TypeScript landing page template for SaaS products, online services and more.
+Ship your startup in days, not weeks. The Next.js boilerplate with all you need to build your SaaS, AI tool, or any other web app and make your first $ online fast.
 
 <a href="https://next-startd.vercel.app">Live demo</a>
 
@@ -60,6 +60,18 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 Supabase handles email/password, Google OAuth and magic link logins. Stripe is
 used to create checkout sessions and process webhooks that update the user's
 subscription status in your database.
+
+### Emails
+
+Use [Resend](https://resend.com) or Mailgun to send transactional emails. Add a
+`RESEND_API_KEY` to your environment and call `/api/send-email` to send emails.
+
+Configure DNS on a subdomain to avoid the spam folder. Set up `SPF`, `DKIM` and
+`DMARC` records with your domain registrar. Resend and Mailgun provide the
+correct values during domain verification.
+
+For inbound mail, point the provider's webhook to `/api/email/webhook` and
+forward messages anywhere you need.
 
 
 ## 🤝 Contributing
