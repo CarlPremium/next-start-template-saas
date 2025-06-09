@@ -1,19 +1,23 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import supabase from '@/utils/supabaseClient';
+import getSupabaseClient from '@/utils/supabaseClient';
 
 export default function Account() {
   const router = useRouter();
   const [user, setUser] = useState<any>(null);
+  const supabase = getSupabaseClient();
 
   useEffect(() => {
-    const session = supabase.auth.getSession().then(({ data }) => {
+    if (!supabase) return;
+    supabase.auth.getSession().then((result) => {
+      const { data } = result;
       if (!data.session) router.replace(`/login`);
       else setUser(data.session.user);
     });
-  }, [router]);
+  }, [router, supabase]);
 
   const signOut = async () => {
+    if (!supabase) return;
     await supabase.auth.signOut();
     router.push(`/`);
   };

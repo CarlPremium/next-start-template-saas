@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import supabase from '@/utils/supabaseClient';
+import getSupabaseClient from '@/utils/supabaseClient';
 
 export default function Login() {
   const router = useRouter();
+  const supabase = getSupabaseClient();
   const [email, setEmail] = useState(``);
   const [password, setPassword] = useState(``);
   const [loading, setLoading] = useState(false);
@@ -11,6 +12,7 @@ export default function Login() {
 
   const signInWithEmail = async () => {
     setLoading(true);
+    if (!supabase) return;
     const { error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) {
       setMessage(error.message);
@@ -22,6 +24,7 @@ export default function Login() {
 
   const signInWithMagicLink = async () => {
     setLoading(true);
+    if (!supabase) return;
     const { error } = await supabase.auth.signInWithOtp({ email });
     setMessage(error ? error.message : `Check your email for the magic link`);
     setLoading(false);
@@ -29,6 +32,7 @@ export default function Login() {
 
   const signInWithGoogle = async () => {
     setLoading(true);
+    if (!supabase) return;
     const { error } = await supabase.auth.signInWithOAuth({ provider: `google` });
     if (error) setMessage(error.message);
     setLoading(false);
