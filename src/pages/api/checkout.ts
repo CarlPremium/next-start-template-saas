@@ -12,9 +12,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     const session = await stripe.checkout.sessions.create({
       mode: `subscription`,
-      line_items: [{ price: `price_123`, quantity: 1 }],
-      success_url: `https://example.com/success`,
-      cancel_url: `https://example.com/cancel`,
+      line_items: [{ price: process.env.STRIPE_PRICE_ID || ``, quantity: 1 }],
+      success_url: `${process.env.NEXT_PUBLIC_APP_URL}/success`,
+      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/cancel`,
     });
 
     return res.status(200).json({ url: session.url });
