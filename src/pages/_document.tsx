@@ -36,7 +36,9 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <script async src="https://scripts.simpleanalyticscdn.com/latest.js" />
+          {process.env.NEXT_PUBLIC_SIMPLE_ANALYTICS_URL && (
+            <script async src={process.env.NEXT_PUBLIC_SIMPLE_ANALYTICS_URL} />
+          )}
         </Head>
         <body>
           <Main />

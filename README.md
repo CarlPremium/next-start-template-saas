@@ -36,6 +36,12 @@ Run the following commands inside the project folder:
 
 To view the project open `http://localhost:3000`
 
+### Environment variables
+
+Copy `.env.example` to `.env.local` and adjust values as needed. The
+`NEXT_PUBLIC_SIMPLE_ANALYTICS_URL` variable controls the analytics script
+loaded in `_document.tsx`.
+
 
 ## 🤝 Contributing
 

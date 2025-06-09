@@ -1,5 +1,6 @@
 import { tw } from 'twind';
 import Particles from 'react-particles-js';
+import Image from 'next/image';
 import Arrow from '@/constants/svg/arrow.svg';
 
 const ParticleBg = () => (
@@ -83,7 +84,7 @@ const CasesSection = () => (
                 )}
               >
                 <div className={tw(`h-64 z-20`)}>
-                  <img
+                  <Image
                     src={article.image}
                     alt={article.alt}
                     className={tw(`h-full w-full object-cover overflow-hidden rounded`)}
