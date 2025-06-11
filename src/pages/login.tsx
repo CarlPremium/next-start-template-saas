@@ -1,41 +1,40 @@
+/* eslint-disable @typescript-eslint/quotes */
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { useMutation } from '@tanstack/react-query';
 import getSupabaseClient from '@/utils/supabaseClient';
 
 export default function Login() {
   const router = useRouter();
   const supabase = getSupabaseClient();
   const [email, setEmail] = useState(``);
-  const [password, setPassword] = useState(``);
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState(``);
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
 
-  const signInWithEmail = async () => {
-    setLoading(true);
-    if (!supabase) return;
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    if (error) {
-      setMessage(error.message);
-    } else {
-      router.push(`/account`);
-    }
-    setLoading(false);
-  };
+  const emailMutation = useMutation({
+    mutationFn: async () => {
+      if (!supabase) throw new Error('Supabase not ready');
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      router.push('/account');
+    },
+    onError: (err: any) => {
+      setMessage(err.message);
+    },
+  });
 
   const signInWithMagicLink = async () => {
-    setLoading(true);
     if (!supabase) return;
     const { error } = await supabase.auth.signInWithOtp({ email });
-    setMessage(error ? error.message : `Check your email for the magic link`);
-    setLoading(false);
+    setMessage(error ? error.message : 'Check your email for the magic link');
   };
 
   const signInWithGoogle = async () => {
-    setLoading(true);
     if (!supabase) return;
-    const { error } = await supabase.auth.signInWithOAuth({ provider: `google` });
+    const { error } = await supabase.auth.signInWithOAuth({ provider: 'google' });
     if (error) setMessage(error.message);
-    setLoading(false);
   };
 
   return (
@@ -57,8 +56,8 @@ export default function Login() {
       />
       <button
         className="bg-blue-500 text-white px-4 py-2 mr-2"
-        onClick={signInWithEmail}
-        disabled={loading}
+        onClick={() => emailMutation.mutate()}
+        disabled={emailMutation.isPending}
         type="button"
       >
         Sign in
@@ -66,15 +65,21 @@ export default function Login() {
       <button
         className="bg-green-500 text-white px-4 py-2 mr-2"
         onClick={signInWithMagicLink}
-        disabled={loading}
+        disabled={emailMutation.isPending}
         type="button"
       >
         Magic Link
       </button>
-      <button className="bg-red-500 text-white px-4 py-2" onClick={signInWithGoogle} disabled={loading} type="button">
+      <button
+        className="bg-red-500 text-white px-4 py-2"
+        onClick={signInWithGoogle}
+        disabled={emailMutation.isPending}
+        type="button"
+      >
         Google
       </button>
       {message && <p className="mt-4 text-red-600">{message}</p>}
     </div>
   );
 }
+/* eslint-enable @typescript-eslint/quotes */

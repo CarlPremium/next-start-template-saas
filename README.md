@@ -1,19 +1,19 @@
 # Next.js Premium SaaS Boilerplate
 
-![Screenshot](public/screenshot.png)
-
-A production ready template for building SaaS products with **Next.js**. It ships with dark mode, SEO, more than 30 UI components and ready made sections so you can launch quickly.
+Elegant starter template for building production-ready SaaS products with **Next.js**.
 
 [Live demo](https://next-startd.vercel.app)
 
 ## Features
 
 - **Next.js 14** with TypeScript
-- **30+ components** including marketing sections, pricing table and authentication pages
+- **30+ components** for marketing pages and onboarding flows
 - **Dark mode** with a simple toggle
 - **Animated sections** powered by CSS transitions
 - **Supabase authentication** (email, OAuth and magic links)
 - **Stripe billing** with checkout and webhook examples
+- **Transactional emails** via Resend or Mailgun
+- **React Query** setup for data fetching
 - **next-seo** for easy SEO management
 - **Twind** for styling
 - Ready to deploy on Vercel
@@ -43,6 +43,8 @@ STRIPE_PRICE_ID=<your-price-id>
 STRIPE_WEBHOOK_SECRET=<your-webhook-secret>
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 RESEND_API_KEY=<email-provider-key>
+MAILGUN_API_KEY=<your-mailgun-key>
+MAILGUN_DOMAIN=<your-mailgun-domain>
 ```
 
 ### Supabase & Stripe
